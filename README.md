@@ -26,4 +26,16 @@
   3. `Dockerfile`: this file contains the base image creation for the LAPP stack
   4. `php.ini`: this file contains the initialization for PHP
   5. `index.html`: this file is our main web page template with the embedded `index.php` script which returns data from the PostgreSQL database initialized earlier
-  6. `index.php`: this file is our main php script for querying the PostgreSQL database and providing the query results to the `index.html` file to be displayed
+  6. `script.php`: this file is our main php script for querying the PostgreSQL database and providing the query results to the `index.html` file to be displayed
+
+### To launch:
+`sudo docker-compose up -d`
+
+### To build only:
+`sudo docker-compose build`
+
+### To stop:
+`sudo docker-compose stop`
+
+### To bring everything down:
+`sudo docker-compose down --volumes`

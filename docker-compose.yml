@@ -1,8 +1,11 @@
 # Third edition YAML specs
+# additional help from https://forums.docker.com/t/cant-get-postgres-to-work/29580/4
 version : "3"
 services :
   # first service is for PHP with Apache 2 web server container
   web :
+    # give this container a name
+    container_name : php_apache_web_server
     # create image from ./docker-file/web/Dockerfile
     build : ./docker-file/web/
     # recall port 80 is for HTTP
@@ -16,17 +19,19 @@ services :
     depends_on :
       - db
   # second service is for the PostgreSQL database container
-    db :
-      # use official Docker PostgreSQL image
-      image : postgres
-      # port 5432 is for PostgreSQL
-      ports :
-        - 5432:5432
-      # Share /docker-entrypoint-initdb.d on the container side and ./docker-entrypoint-initdb.d on the host side
-      volumes :
-        - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      # set-up for PostgreSQL database (root is superuser with the password "password")
-      environment :
-        - POSTGRES_PASSWORD : password
-        - POSTGRES_USER : root
-        - POSTGRES_DB : db_test
+  db :
+    # give this container a name
+    container_name : postgresql_db
+    # use official Docker PostgreSQL image
+    image : postgres
+    # port 5432 is for PostgreSQL
+    ports :
+      - 5432:5432
+    # Share /docker-entrypoint-initdb.d on the container side and ./docker-entrypoint-initdb.d on the host side
+    volumes :
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    # set-up for PostgreSQL database (root is superuser with the password "password")
+    environment :
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db_test
