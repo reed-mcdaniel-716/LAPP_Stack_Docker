@@ -1,0 +1,32 @@
+# Third edition YAML specs
+version : "3"
+services :
+  # first service is for PHP with Apache 2 web server container
+  web :
+    # create image from ./docker-file/web/Dockerfile
+    build : ./docker-file/web/
+    # recall port 80 is for HTTP
+    ports :
+      - 80:80
+    # for source material (volumes store data)
+    # Share /var/www/html on the container side and ./volumes/web/html on the host side
+    volumes :
+      - ./volumes/web/html:/var/www/html
+    # this service depends on the database defined below
+    depends_on :
+      - db
+  # second service is for the PostgreSQL database container
+    db :
+      # use official Docker PostgreSQL image
+      image : postgres
+      # port 5432 is for PostgreSQL
+      ports :
+        - 5432:5432
+      # Share /docker-entrypoint-initdb.d on the container side and ./docker-entrypoint-initdb.d on the host side
+      volumes :
+        - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      # set-up for PostgreSQL database (root is superuser with the password "password")
+      environment :
+        - POSTGRES_PASSWORD : password
+        - POSTGRES_USER : root
+        - POSTGRES_DB : db_test
