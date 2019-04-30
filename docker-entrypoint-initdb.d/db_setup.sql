@@ -3,11 +3,11 @@
 DROP TABLE IF EXISTS BIRTHDAYS;
 
 CREATE TABLE BIRTHDAYS(
-  NAME TEXT NOT NULL,
-  AGE INT NOT NULL,
-  CAKE TEXT NOT NULL
+  name TEXT NOT NULL,
+  age INT NOT NULL,
+  cake TEXT NOT NULL
 );
 
-INSERT INTO BIRTHDAYS (NAME, AGE, CAKE) VALUES ('Nathan', 28, 'Chocolate');
-INSERT INTO BIRTHDAYS (NAME, AGE, CAKE) VALUES ('Lucas', 24, 'Strawberry');
-INSERT INTO BIRTHDAYS (NAME, AGE, CAKE) VALUES ('Peyton', 26, 'Vanilla');
+INSERT INTO BIRTHDAYS (name, age, cake) VALUES ('Nathan', 28, 'Chocolate');
+INSERT INTO BIRTHDAYS (name, age, cake) VALUES ('Lucas', 24, 'Strawberry');
+INSERT INTO BIRTHDAYS (name, age, cake) VALUES ('Peyton', 26, 'Vanilla');

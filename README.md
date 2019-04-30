@@ -25,8 +25,8 @@
   2. `db_setup.sql`: the files in the `docker-entrypoint-initdb.d` directory are those that are first run when the PostgreSQL database is initialized
   3. `Dockerfile`: this file contains the base image creation for the LAPP stack
   4. `php.ini`: this file contains the initialization for PHP
-  5. `index.html`: this file is our main web page template with the embedded `index.php` script which returns data from the PostgreSQL database initialized earlier
-  6. `script.php`: this file is our main php script for querying the PostgreSQL database and providing the query results to the `index.html` file to be displayed
+  5. `index.html`: this file is our main web page template
+  6. `script.php`: this file is our main php script for querying the PostgreSQL database and displaying the contents of `index.html`
 
 ### To launch:
 `sudo docker-compose up -d`
