@@ -8,10 +8,12 @@ RUN apt-get install -y nano
 # Install PostgreSQL related extension with "docker-php-ext-install"
 # libpq-dev provides minimum PostgreSQL binaries
 # mbstring helps deal with multibyte encodings in PHP for different languages
+# cleaning of packages done at the end
 # since this source code was originally in Japanese, this may be unecessary for English
 RUN  set  -ex  apk  --no-cache add postgresql-dev libpq-dev
 RUN  apt-get   install   -y   libpq-dev   \
-    &&   docker-php-ext-install  pdo  pdo_pgsql  pgsql  mbstring
+    &&   docker-php-ext-install  pdo  pdo_pgsql  pgsql  mbstring \
+    && apt-get clean autoclean && apt-get autoremove --yes
 
 # Copy PHP configuration file to the container
 COPY   ./php.ini   /usr/local/etc/php/
