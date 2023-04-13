@@ -9,7 +9,7 @@ RUN apt-get install -y nano
 # libpq-dev provides minimum PostgreSQL binaries
 # mbstring helps deal with multibyte encodings in PHP for different languages
 # cleaning of packages done at the end
-# since this source code was originally in Japanese, this may be unecessary for English
+# since this source code was originally in another language, this may be unecessary for English
 RUN  set  -ex  apk  --no-cache add postgresql-dev libpq-dev
 RUN  apt-get   install   -y   libpq-dev   \
     &&   docker-php-ext-install  pdo  pdo_pgsql  pgsql  mbstring \
